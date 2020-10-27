@@ -3,9 +3,12 @@
 
     export let dtIndex;
     let selectedId = [];
-
-    const hendleGetUserId = (e) => {
-        console.log(e.detil);
+    
+    const hendleGetUserId = (evt) => {
+        let { id, selected } = evt.detail
+        if(selected) selectedId = [...selectedId, id]
+        else selectedId = selectedId.filter(row => row !== id);
+        console.log(selectedId);
     };
 </script>
 

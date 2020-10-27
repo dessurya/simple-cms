@@ -3,16 +3,16 @@
     const dispacth = createEventDispatcher();
 
     export let row
+    let {id} = row
 
     let selected = false
 
-    const hendleSelectedRow = async (id) => {
+    const hendleSelectedRow = () => {
         selected = !selected
-        console.log({id, selected})
-        await dispacth('hendleGetUserId', {id, selected})
+        dispacth('hendleGetUserId', {id, selected})
 	}
 </script>
-<tr class="cursor-pointer" class:bg-blue-100={selected == true} on:click={() => hendleSelectedRow(row.id)}>
+<tr class="cursor-pointer" class:bg-blue-100={selected == true} on:click={hendleSelectedRow}>
     <td
         class="px-6 py-4 whitespace-no-wrap">
         {row.name}
